@@ -3,6 +3,7 @@ export * from './components/atomos/Icono';
 export * from './components/moleculas/BtnSave';
 export * from './components/organismos/MenuHambur';
 export * from './components/organismos/sidebar/Sidebar';
+export * from './components/organismos/sidebar/SidebarCard';
 export * from './components/templates/HomeTemplate';
 export * from './components/templates/LoginTemplate';
 export * from './context/AuthContent';
