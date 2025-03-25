@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { supabase, InsertarUsuarios } from "../index";
 
 const AuthContext = createContext();
-export const AuthContextProvider = ({children})=> {
+export const AuthContextProvider = ({ children })=> {
     const [ user, setUser ] = useState([]);
 
     useEffect(()=>{
@@ -24,13 +24,21 @@ export const AuthContextProvider = ({children})=> {
         }
     },[]);
 
-    const insertarUsuarios = async ( dataProvider, idAuthSupabase ) => {
+    async function InsertarUsuarios(dataProvider, idAuthSupabase) {
         const p = {
             nombres: dataProvider.name,
             foto: dataProvider.picture,
-            idauth_supabase: idAuthSupabase,
+            idauth_supab: idAuthSupabase,
         };
-        await InsertarUsuarios(p);
+        // await InsertarUsuarios(p);
+        const { data, error } = await supabase.from("usuarios").insert([p]);
+
+    if (error) {
+        console.error("Error insertando usuario:", error);
+        return null;
+    }
+
+    return data;
     }
     return (
         <AuthContext.Provider value={{user}} >{children}</AuthContext.Provider>
