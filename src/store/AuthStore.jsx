@@ -1,9 +1,11 @@
 import { create } from "zustand";
 import { supabase } from "../index"
+import { useState } from "react";
 
 
 export const useAuthStore = create((set) => ({
     isAuth: false,
+    datauserGoogle: [],
     signInWithGoogle: async () => {
         try {
             const { data, error } = await supabase.auth.signInWithOAuth({
@@ -21,8 +23,8 @@ export const useAuthStore = create((set) => ({
     },
     signout: async () => {
         const { error } = await supabase.auth.signOut();
-        set({isAuth: false})
+        set({ isAuth: false });
         if (error) throw new Error("A ocurrido un error durante el cierre de sesión")
     }
 
-}))
+}));

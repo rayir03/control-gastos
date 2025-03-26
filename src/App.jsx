@@ -1,39 +1,50 @@
-import { MyRoutes, Sidebar, Device, Light, Dark, AuthContextProvider, MenuHambur } from "./index"
+import {
+  MyRoutes,
+  Sidebar,
+  Device,
+  Light,
+  Dark,
+  AuthContextProvider,
+  MenuHambur,
+} from "./index";
 import { createContext, useState } from "react";
-
+import { useLocation } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
-
 
 export const ThemeContext = createContext(null);
 
 function App() {
-  const [ theme, setTheme ] = useState("light");
+  const { pathname } = useLocation();
+  const [theme, setTheme] = useState("light");
   const themeStyle = theme === "light" ? Light : Dark;
-  const [ sidebarOpen, setSidebarOpen ] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
-    <ThemeContext.Provider value={{ setTheme, theme }}>
-      <ThemeProvider theme={themeStyle}>
-        <AuthContextProvider>
-          <Container className={sidebarOpen ? "active" : ""}>
-            <div className="ContentSidebar">
-
-              <Sidebar state={sidebarOpen} setState={setSidebarOpen} />
-            </div>
-            <div className="ContentMenuHambur">
-              <MenuHambur />
-            </div>
-            <Containerbody>
+      <ThemeContext.Provider value={{ setTheme, theme }}>
+        <ThemeProvider theme={themeStyle}>
+          <AuthContextProvider>
+            {pathname != "/login" ? (
+              <Container className={sidebarOpen ? "active" : ""}>
+                <div className="ContentSidebar">
+                  <Sidebar state={sidebarOpen} setState={setSidebarOpen} />
+                </div>
+                <div className="ContentMenuHambur">
+                  <MenuHambur />
+                </div>
+                <Containerbody>
+                  <MyRoutes />
+                </Containerbody>
+              </Container>
+            ) : (
               <MyRoutes />
-            </Containerbody>
-          </Container>
-        </AuthContextProvider>
-      </ThemeProvider>
-    </ThemeContext.Provider>
+            )}
+          </AuthContextProvider>
+        </ThemeProvider>
+      </ThemeContext.Provider>
     </>
-  )
+  );
 }
 const Container = styled.div`
   display: grid;
@@ -60,14 +71,13 @@ const Container = styled.div`
       display: none;
     }
   }
-`
+`;
 const Containerbody = styled.div`
-grid-column: 1;
-width: 100%;
-@media ${Device.tablet} {
-  grid-column: 2;
-
+  grid-column: 1;
+  width: 100%;
+  @media ${Device.tablet} {
+    grid-column: 2;
   }
-`
+`;
 
-export default App
+export default App;

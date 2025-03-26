@@ -1,6 +1,6 @@
 import { supabase } from "../index";
 
-const ObtenerIdAuthSupabase = async () => {
+export const ObtenerIdAuthSupabase = async () => {
     const { data: {session}} = await supabase.auth.getSession();
 
     if(session != null) {
@@ -9,4 +9,4 @@ const ObtenerIdAuthSupabase = async () => {
         
         return idAuthSupabase;
     }
-}
+};
