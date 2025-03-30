@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
 
+
 export const ThemeContext = createContext(null);
 
 function App() {
