@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { ContentHeader } from "../../index";
+import { ContentHeader, DataUsers } from "../../index";
 
-export function Header() {
+export function Header({ state, setState }) {
     return (
         <ContentHeader>
-
+            <DataUsers state={ state } setState={ setState } />
         </ContentHeader>
     )
 }
