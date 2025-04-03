@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { Header } from "../../index"
+import { useState } from "react";
 
 export function ConfiguracionTemplate() {
+  const [ state, setState ] = useState(false);
   return (
     <Container>
       <header className="header">
-        <Header />
+        <Header stateConfig={{state: state, setState: () => setState(!state)}}/>
       </header>
       <section className="area1">
         

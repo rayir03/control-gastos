@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { ItemsDesplegable } from "../../index"
+import { ItemsDesplegable, v } from "../../index"
 
-export function ListaMenuDesplegable({ data }) {
+export function ListaMenuDesplegable({ data, top }) {
     return (
-        <Container>
+        <Container top={ top }>
             {
                 data.map((item, index) => {
                     return (
@@ -16,5 +16,12 @@ export function ListaMenuDesplegable({ data }) {
 }
 
 const Container = styled.div`
-
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: ${({ theme }) => theme.bg3};
+    border-radius: 22px;
+    top: ${(props) => props.top};
+    box-shadow: ${() => v.boxshadowGray};
 `;

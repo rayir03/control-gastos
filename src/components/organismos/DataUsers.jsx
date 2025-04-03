@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { UserAuth, BtnCircular, v, ListaMenuDesplegable, DesplegableUser } from "../../index";
 
-export function DataUsers() {
+export function DataUsers({ stateConfig }) {
   const { user } = UserAuth();
   return (
-    <Container>
+    <Container onClick={ stateConfig.setState }>
       <div className="imgContainer">
         <img src={user.picture} alt="" />
 
@@ -21,7 +21,10 @@ export function DataUsers() {
         translateY= "-12px"
       />
       <span className="nombre">{user.name}</span>
-      <ListaMenuDesplegable data={DesplegableUser} />
+      {
+        stateConfig.state && (<ListaMenuDesplegable data={DesplegableUser} top="62px" />)
+      }
+      
     </Container>
   );
 }
