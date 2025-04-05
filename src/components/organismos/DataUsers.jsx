@@ -1,8 +1,14 @@
 import styled from "styled-components";
-import { UserAuth, BtnCircular, v, ListaMenuDesplegable, DesplegableUser } from "../../index";
+import { UserAuth, BtnCircular, v, ListaMenuDesplegable, DesplegableUser, useAuthStore } from "../../index";
 
 export function DataUsers({ stateConfig }) {
   const { user } = UserAuth();
+  const { signout } = useAuthStore();
+  const funcionXtipo = async (tipo) => {
+    if(tipo === "cerrarsesion") {
+      await signout()
+    }
+  }
   return (
     <Container onClick={ stateConfig.setState }>
       <div className="imgContainer">
@@ -22,7 +28,11 @@ export function DataUsers({ stateConfig }) {
       />
       <span className="nombre">{user.name}</span>
       {
-        stateConfig.state && (<ListaMenuDesplegable data={DesplegableUser} top="62px" />)
+        stateConfig.state && (
+          <ListaMenuDesplegable data={DesplegableUser} top="62px" 
+            funcion={(p) => funcionXtipo }
+          />
+        )
       }
       
     </Container>
