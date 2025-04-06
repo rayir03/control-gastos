@@ -30,7 +30,7 @@ export function DataUsers({ stateConfig }) {
       {
         stateConfig.state && (
           <ListaMenuDesplegable data={DesplegableUser} top="62px" 
-            funcion={(p) => funcionXtipo }
+            funcion={(p) => funcionXtipo(p) }
           />
         )
       }
