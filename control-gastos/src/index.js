@@ -1,4 +1,5 @@
 export * from './App';
+export * from './compontents/moleculas/Btnsave';
 export * from './compontents/templates/HomeTemplate';
 export * from './compontents/templates/LoginTemplate';
 export * from './index';
