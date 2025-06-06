@@ -5,7 +5,8 @@ export function Btnsave({ funcion, titulo, bgcolor, icono }) {
     <Container type="submit" bgcolor={ bgcolor }>
       <Icono>{ icono }</Icono>
       <span className="btn" onClick={ funcion }>{ titulo }</span>
-    </Container>);
+    </Container>
+  );
 }
 const Container =styled.button`
   display: flex;
