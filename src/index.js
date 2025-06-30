@@ -4,6 +4,7 @@
  */
 
 export * from './App'
+export * from './components/atomos/icono'
 export * from './components/moleculas/Btnsave'
 export * from './components/templates/HomeTemplate'
 export * from './components/templates/LoginTemplate'
@@ -12,3 +13,6 @@ export * from './main'
 export * from './pages/Home'
 export * from './pages/Login'
 export * from './routes/routes'
+export * from './styles/breakpoints'
+export * from './styles/themes'
+export * from './styles/variables'
