@@ -11,7 +11,7 @@ export const AuthContextProvider = ({children}) => {
                 }
                 else {
                     
-                    setUser(session);
+                    setUser(session?.user.user_metadata);
                     console.log("session:", session)
                 }
             }
