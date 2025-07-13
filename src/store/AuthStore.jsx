@@ -8,16 +8,25 @@ export const useAuthStore = create((set) => ({
                 {provider: "google",}
             );
             if(error) throw new Error("A ocurrido un error durante la autenticacion")
-            set({isAuth:true})
+            set({isAuth:true});
             return data;
             
         } catch (error) {
-            
+            console.error("Error en signInWithGoogle:", error.message);
+            throw error;
         }
     },
     signout: async() => {
-        const {error} = await supabase.auth.signOut();
-        set({isAuth:false})
-        if(error) throw new Error("A ocurrido un error durante el cierre de sesion")
-    }
-}))
+        try {
+            console.log("Ejecutando signout...")
+            const {error} = await supabase.auth.signOut();
+            
+            if(error) throw new Error("A ocurrido un error durante el cierre de sesion")
+            set({isAuth:false})
+            
+        } catch (error) {
+            console.error("Error en signout:", error.message);
+            throw error;
+        }
+    },
+}));
