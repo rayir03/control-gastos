@@ -4,8 +4,12 @@
  */
 
 export * from './App'
+export * from './components/atomos/ContentHeader'
 export * from './components/atomos/icono'
+export * from './components/moleculas/BtnCircular'
 export * from './components/moleculas/Btnsave'
+export * from './components/organismos/DataUser'
+export * from './components/organismos/Header'
 export * from './components/organismos/MenuHambur'
 export * from './components/organismos/sidebar/Sidebar'
 export * from './components/organismos/sidebar/SidebarCard'

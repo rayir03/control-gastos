@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import {Header} from "../../index";
 export function ConfiguracionTemplate() {
   return (
   <Container>
-    <header className="header"/>
+    <header className="header">
+        <Header />
+    </header>
     <section className="area1">
         
     </section>
