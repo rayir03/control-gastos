@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {UserAuth, BtnCircular, v} from "../../index";
+import {UserAuth, BtnCircular, v, ListaMenuDesplegable, DesplegableUser} from "../../index";
 export function DataUser() {
   const {user} = UserAuth();
   return (
@@ -19,7 +19,7 @@ export function DataUser() {
         translateY="-12px"
       />
       <span className="nombre">{user.name}</span>
-    
+      <ListaMenuDesplegable />
   </Container>);
 }
 const Container =styled.div`
