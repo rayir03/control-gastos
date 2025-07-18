@@ -19,7 +19,7 @@ export function DataUser() {
         translateY="-12px"
       />
       <span className="nombre">{user.name}</span>
-      <ListaMenuDesplegable />
+      <ListaMenuDesplegable data={DesplegableUser} top="62px"/>
   </Container>);
 }
 const Container =styled.div`
