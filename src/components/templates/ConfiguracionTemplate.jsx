@@ -1,9 +1,13 @@
 import styled from "styled-components";
-import {Header, Selector, v} from "../../index";
+import {Header, Selector, v, ListaPaises} from "../../index";
 import { useState } from "react";
 export function ConfiguracionTemplate() {
+  const [select, setSelect] = useState([]);
   const [ state, setState ] = useState(false);
   const [ stateListaPaises, setStateListaPaises ] = useState(false);
+  const moneda = select.symbol;
+  const pais = select.countryName;
+  const paisSeleccionado = "💸 "+ moneda+ " " + pais;
 
   return (
   <Container>
@@ -16,7 +20,20 @@ export function ConfiguracionTemplate() {
     <section className="area2">
        <ContentCard>
         <span>Moneda:</span>
-        <Selector state={stateListaPaises} color={v.colorselector}/>
+        <Selector 
+          state={stateListaPaises} 
+          color={v.colorselector} 
+          texto1={paisSeleccionado}
+          funcion={()=> setStateListaPaises(!stateListaPaises)}/>
+        {
+          stateListaPaises && (
+            <ListaPaises 
+              setSelect={(p) => setSelect(p)} 
+              setState={() => setStateListaPaises(!stateListaPaises)}
+            />
+          )
+        }
+        
        </ContentCard>
     </section>
     <section className="main">
