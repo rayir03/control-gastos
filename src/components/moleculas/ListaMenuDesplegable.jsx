@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ItemsDesplegable, v } from "../../index"
-export function ListaMenuDesplegable({data, top}) {
+export function ListaMenuDesplegable({data, top, funcion}) {
   return (
   <Container top={top}>
     {
@@ -9,6 +9,7 @@ export function ListaMenuDesplegable({data, top}) {
           <ItemsDesplegable 
             key={index}
             item={item}
+            funcion = {() => funcion(item.tipo)}
           />
         )
       })

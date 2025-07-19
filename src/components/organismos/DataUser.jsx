@@ -1,9 +1,15 @@
 import styled from "styled-components";
-import {UserAuth, BtnCircular, v, ListaMenuDesplegable, DesplegableUser} from "../../index";
-export function DataUser() {
+import {UserAuth, BtnCircular, v, ListaMenuDesplegable, DesplegableUser, useAuthStore} from "../../index";
+export function DataUser({stateConfig}) {
   const {user} = UserAuth();
+  const {signout} = useAuthStore();
+  const funcionXtipo = async (tipo) => {
+    if(tipo === "cerrarsesion") {
+      await signout();
+    }
+  }
   return (
-  <Container>
+  <Container onClick={stateConfig.setState}>
     <div className="imgContainer">
       <img src={user.picture}/>
     </div>
@@ -19,7 +25,12 @@ export function DataUser() {
         translateY="-12px"
       />
       <span className="nombre">{user.name}</span>
-      <ListaMenuDesplegable data={DesplegableUser} top="62px"/>
+      {
+        stateConfig.state && (
+
+          <ListaMenuDesplegable data={DesplegableUser} top="62px" funcion={(p) => funcionXtipo(p)}/>
+        )
+      }
   </Container>);
 }
 const Container =styled.div`

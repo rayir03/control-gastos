@@ -1,23 +1,18 @@
 import styled from "styled-components";
-import {Header, Selector, v} from "../../index";
+import {Header} from "../../index";
 import { useState } from "react";
-export function ConfiguracionTemplate() {
+export function PlantillaBase() {
   const [ state, setState ] = useState(false);
-  const [ stateListaPaises, setStateListaPaises ] = useState(false);
-
   return (
   <Container>
     <header className="header">
         <Header stateConfig={{state:state, setState: () => setState(!state)}}/>
     </header>
     <section className="area1">
-        <h1>Ajustes</h1>
+        
     </section>
     <section className="area2">
-       <ContentCard>
-        <span>Moneda:</span>
-        <Selector state={stateListaPaises} color={v.colorselector}/>
-       </ContentCard>
+       
     </section>
     <section className="main">
         
@@ -59,13 +54,3 @@ const Container =styled.div`
         background-color: rgba(179, 46, 241, 0.14);
     }
 `;
-
-const ContentCard = styled.div`
-  display:flex;
-  text-align:star;
-  align-items: center;
-  gap: 20px;
-  position: relative;
-  width: 100%;
-  justify-content: center;
-`

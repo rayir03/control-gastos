@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import {ContentHeader, DataUser} from "../../index";
-export function Header({state, setState}) {
+export function Header({stateConfig}) {
   return (
     <ContentHeader>
-        <DataUser state={state} setState={setState}/>
+        <DataUser stateConfig={stateConfig}/>
     </ContentHeader>
   );
 }
