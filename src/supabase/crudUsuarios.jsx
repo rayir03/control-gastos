@@ -1,4 +1,4 @@
-import { supabase } from "../index"
+import { ObtenerIdAuthSupabase, supabase } from "../index"
 
 
 export const InsertarUsuarios = async(p)=> {
@@ -8,5 +8,18 @@ export const InsertarUsuarios = async(p)=> {
         
     } catch (error) {
         
+    }
+};
+export const MostrarUsuarios = async () => {
+    try {
+        const idAuthSupabase = await ObtenerIdAuthSupabase();
+        const {error, data } = await supabase.
+        from("usuarios").select().eq("idauth_supabase", idAuthSupabase);
+        if(error) {
+            alert("mostrar usuarios", error); 
+        }
+        return data[0];
+    } catch (error) {
+        alert(error.error_description || error.message + "MostrarUsuarios");
     }
 }
