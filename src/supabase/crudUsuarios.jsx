@@ -18,7 +18,10 @@ export const MostrarUsuarios = async () => {
         if(error) {
             alert("mostrar usuarios", error); 
         }
-        return data[0];
+        if(data) {
+
+            return data[0];
+        }
     } catch (error) {
         alert(error.error_description || error.message + "MostrarUsuarios");
     }
