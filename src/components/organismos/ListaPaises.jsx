@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Device } from "../../styles/breakpoints";
-import { v, InputBuscadorLista, ConvertirCapitalize } from "../../index";
+import { v, InputBuscadorLista, ConvertirCapitalize, BtnCerrar } from "../../index";
 import iso from "iso-country-currency";
 import { useState } from "react";
 export function ListaPaises({setSelect, setState}) {
@@ -24,7 +24,8 @@ export function ListaPaises({setSelect, setState}) {
     <Container>
         <header className="header">
             <span>busca tu país</span>
-            <span className="close" onClick={setState}>{<v.iconocerrar />}</span>
+            
+            <BtnCerrar funcion={setState}/>
         </header>
         <InputBuscadorLista onChange={buscar} placeholder="buscar..."/>
         {
@@ -54,7 +55,8 @@ const Container =styled.div`
     padding: 10px;
     gap: 10px;
     color: ${({theme}) => theme.text};
-    @media ${Device.tablet} {
+    z-index: 1;
+    @media ${() => Device.tablet} {
         width:  400px;
     }
     .header {
@@ -62,15 +64,7 @@ const Container =styled.div`
         align-items: center;
         justify-content: space-between;
         background-color: inherit;
-        .close {
-            cursor: pointer;
-            font-size: 25px;
-            transition: all 0.2s;
-            &:hover {
-                color: ${() => v.colorselector};
-                transform: scale(1.2);
-            }
-        }
+        
     }
 `
 const ItemContainer = styled.section`

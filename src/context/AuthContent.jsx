@@ -13,7 +13,7 @@ export const AuthContextProvider = ({children}) => {
                     
                     setUser(session?.user.user_metadata);
                     insertarUsuarios(session?.user.user_metadata, session?.user.id);
-                    console.log("session:", session)
+                    
                 }
             }
         )
