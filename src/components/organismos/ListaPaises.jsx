@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { Device } from "../../styles/breakpoints";
 import { v, InputBuscadorLista, ConvertirCapitalize } from "../../index";
 import iso from "iso-country-currency";
 import { useState } from "react";
 export function ListaPaises({setSelect, setState}) {
     const isocodigos = iso.getAllISOCodes();
     const [dataresult, setDataresult] = useState([]);
-
+    
     function seleccionar(p) {
         setSelect(p)
         setState();
@@ -31,8 +32,8 @@ export function ListaPaises({setSelect, setState}) {
             dataresult.map((item, index) => {
                 return (
                     <ItemContainer key={index} onClick={() => seleccionar(item)}>
-                        <span>{item.countryName}</span>
-                        <span>{item.symbol}</span>
+                        <span>{item?.countryName}</span>
+                        <span>{item?.symbol}</span>
                     </ItemContainer>
                 )
             })
@@ -41,7 +42,7 @@ export function ListaPaises({setSelect, setState}) {
     );
 }
 const Container =styled.div`
-    margin-top: 10px;
+    margin-top: 15px;
     position: absolute;
     top: 88%;
     width: 100%;
@@ -53,7 +54,9 @@ const Container =styled.div`
     padding: 10px;
     gap: 10px;
     color: ${({theme}) => theme.text};
-    
+    @media ${Device.tablet} {
+        width:  400px;
+    }
     .header {
         display: flex;
         align-items: center;

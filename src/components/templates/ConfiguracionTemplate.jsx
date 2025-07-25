@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import {Header, Selector, v, ListaPaises} from "../../index";
+import {Header, Selector, v, ListaPaises, useUsuariosStore} from "../../index";
 import { useState } from "react";
+
 export function ConfiguracionTemplate() {
+  const { datausuarios } = useUsuariosStore();
   const [select, setSelect] = useState([]);
   const [ state, setState ] = useState(false);
   const [ stateListaPaises, setStateListaPaises ] = useState(false);
-  const moneda = select.symbol;
-  const pais = select.countryName;
+  const moneda = select.symbol ? select.symbol : datausuarios.moneda;
+  const pais = select.countryName ? select.countryName : datausuarios.pais;
   const paisSeleccionado = "💸 "+ moneda+ " " + pais;
 
   return (
@@ -34,6 +36,9 @@ export function ConfiguracionTemplate() {
           )
         }
         
+       </ContentCard>
+       <ContentCard>
+        <span>Tema: </span>
        </ContentCard>
     </section>
     <section className="main">

@@ -15,7 +15,7 @@ function App() {
   
   const { isLoading, error } = useQuery({
     queryKey: ["mostrar usuarios"], 
-    queryFn: () =>mostrarUsuarios,
+    queryFn: () => mostrarUsuarios(),
   });
  if(isLoading) {
   return <h1>Cargando...</h1>
