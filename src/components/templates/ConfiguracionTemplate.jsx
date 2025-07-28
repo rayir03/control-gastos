@@ -16,10 +16,10 @@ export function ConfiguracionTemplate() {
   //tema
   const iconodb = datausuarios.tema === "0" ? "🌞" : "🌚";
   const temadb = datausuarios.tema === "0" ? "light" : "dark";
-  const temainicial = datausuarios.tema === "0" ? selectTema.tema : temadb;
+  const temainicial = selectTema.tema || temadb;
   const iconoinicial = selectTema.icono?selectTema.icono : iconodb;
   const temaSeleccionado = iconoinicial + " " + temainicial
-
+ 
   //funcion editar
 
   const editar = async () => {
@@ -113,6 +113,7 @@ const Container =styled.div`
         background-color: rgba(229, 67, 26, 0.14);
         display: flex;
         align-items: center;
+        justify-content: center;
     }
     .area2 {
         grid-area: area2;
@@ -131,7 +132,7 @@ const Container =styled.div`
 
 const ContentCard = styled.div`
   display:flex;
-  text-align:star;
+  text-align:start;
   align-items: center;
   gap: 20px;
   position: relative;
