@@ -3,7 +3,7 @@ import {Header, Selector, v, ListaPaises, useUsuariosStore, ListaGenerica, Temas
 import { useState } from "react";
 
 export function ConfiguracionTemplate() {
-  const { datausuarios } = useUsuariosStore();
+  const { datausuarios, editartemamonedauser } = useUsuariosStore();
   const [select, setSelect] = useState([]);
   const [selectTema, setSelectTema] = useState([]);
   const [ state, setState ] = useState(false);
@@ -19,6 +19,19 @@ export function ConfiguracionTemplate() {
   const temainicial = datausuarios.tema === "0" ? selectTema.tema : temadb;
   const iconoinicial = selectTema.icono?selectTema.icono : iconodb;
   const temaSeleccionado = iconoinicial + " " + temainicial
+
+  //funcion editar
+
+  const editar = async () => {
+    const themeElegido = selectTema.descripcion === "light" ? "0" : "1";
+    const p = {
+      tema:themeElegido,
+      moneda:moneda,
+      pais:pais,
+      id:datausuarios.id
+    }
+    await editartemamonedauser(p);
+  }
 
   return (
   <Container>
@@ -69,6 +82,7 @@ export function ConfiguracionTemplate() {
         titulo="Guardar"
         bgcolor={v.colorselector}
         icono={<v.iconoguardar />}
+        funcion={editar}
        />
     </section>
     <section className="main">
