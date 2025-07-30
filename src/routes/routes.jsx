@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { Login, Home, ProtectedRoute, UserAuth, Configuracion } from "../index"
+import { Login, Home, ProtectedRoute, UserAuth, Configuracion, Categorias } from "../index"
 export function MyRoutes() {
     const {user} = UserAuth();
     return (
@@ -10,6 +10,7 @@ export function MyRoutes() {
             redirectTo="/login"/>}>
             <Route path="/" element={ <Home /> } />
             <Route path="/configurar" element={ <Configuracion /> } />
+            <Route path="/categorias" element={ <Categorias /> } />
         </Route>
     </Routes>
     

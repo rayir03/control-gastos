@@ -12,7 +12,7 @@ function App() {
 
   const { pathname } = useLocation();
   // const [ theme, setTheme ] = useState("dark");
-  const theme = datausuarios.tema === "0" ? "light" : "dark";
+  const theme = datausuarios?.tema === "0" ? "light" : "dark";
   const themeStyle = theme === "light" ? Light : Dark
   const [ sidebarOpen, setSidebarOpen ] = useState(false);
   
@@ -46,7 +46,7 @@ function App() {
             </Containerbody>
           </Container>
             ) : (
-              <MyRoutes />
+              <Login />
             )
           }
           
