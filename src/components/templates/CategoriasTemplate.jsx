@@ -1,8 +1,12 @@
 import styled from "styled-components";
-import {Header, ContentFiltros, BtnDesplegable } from "../../index";
+import {Header, ContentFiltros, BtnDesplegable, useOperaciones, ListaMenuDesplegable, DataDesplegableTipo } from "../../index";
 import { useState } from "react";
 export function CategoriasTemplate() {
   const [ state, setState ] = useState(false);
+  const { colorCategoria, tituloBtnDes, bgCategoria, setTipo } = useOperaciones();
+  function cambiarTipos(p) {
+    setTipo(p)
+  }
   return (
   <Container>
     <header className="header">
@@ -10,7 +14,8 @@ export function CategoriasTemplate() {
     </header>
     <section className="tipo">
         <ContentFiltros>
-          <BtnDesplegable />
+          <BtnDesplegable textcolor={colorCategoria} bgcolor={bgCategoria} text={tituloBtnDes}/>
+          <ListaMenuDesplegable data={DataDesplegableTipo} top= "112%" funcion={(p) => cambiarTipos(p)}/>
         </ContentFiltros>
     </section>
     <section className="area2">
